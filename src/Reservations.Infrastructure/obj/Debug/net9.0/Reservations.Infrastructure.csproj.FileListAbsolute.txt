@@ -1,0 +1,15 @@
+C:\Users\admin\repos\test-res\backend\src\Reservations.Infrastructure\bin\Debug\net9.0\Reservations.Infrastructure.deps.json
+C:\Users\admin\repos\test-res\backend\src\Reservations.Infrastructure\bin\Debug\net9.0\Reservations.Infrastructure.dll
+C:\Users\admin\repos\test-res\backend\src\Reservations.Infrastructure\bin\Debug\net9.0\Reservations.Infrastructure.pdb
+C:\Users\admin\repos\test-res\backend\src\Reservations.Infrastructure\bin\Debug\net9.0\Reservations.Domain.dll
+C:\Users\admin\repos\test-res\backend\src\Reservations.Infrastructure\bin\Debug\net9.0\Reservations.Domain.pdb
+C:\Users\admin\repos\test-res\backend\src\Reservations.Infrastructure\obj\Debug\net9.0\Reservations.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\admin\repos\test-res\backend\src\Reservations.Infrastructure\obj\Debug\net9.0\Reservations.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\repos\test-res\backend\src\Reservations.Infrastructure\obj\Debug\net9.0\Reservations.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\admin\repos\test-res\backend\src\Reservations.Infrastructure\obj\Debug\net9.0\Reservations.Infrastructure.AssemblyInfo.cs
+C:\Users\admin\repos\test-res\backend\src\Reservations.Infrastructure\obj\Debug\net9.0\Reservations.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\admin\repos\test-res\backend\src\Reservations.Infrastructure\obj\Debug\net9.0\Reservat.79B8A4A6.Up2Date
+C:\Users\admin\repos\test-res\backend\src\Reservations.Infrastructure\obj\Debug\net9.0\Reservations.Infrastructure.dll
+C:\Users\admin\repos\test-res\backend\src\Reservations.Infrastructure\obj\Debug\net9.0\refint\Reservations.Infrastructure.dll
+C:\Users\admin\repos\test-res\backend\src\Reservations.Infrastructure\obj\Debug\net9.0\Reservations.Infrastructure.pdb
+C:\Users\admin\repos\test-res\backend\src\Reservations.Infrastructure\obj\Debug\net9.0\ref\Reservations.Infrastructure.dll
