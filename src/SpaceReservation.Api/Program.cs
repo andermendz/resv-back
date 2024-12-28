@@ -13,9 +13,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Configure database connection
+var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") ?? 
+    builder.Configuration.GetConnectionString("DefaultConnection");
+
 // Add PostgreSQL DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(connectionString));
 
 // Register repositories
 builder.Services.AddScoped<ISpaceRepository, SpaceRepository>();
@@ -46,19 +50,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
 app.UseCors("AllowAll");
+
+app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
-
-// Apply migrations
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    db.Database.Migrate();
-}
 
 app.Run();
