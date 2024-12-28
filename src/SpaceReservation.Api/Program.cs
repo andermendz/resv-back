@@ -3,6 +3,7 @@ using SpaceReservation.Application.Services;
 using SpaceReservation.Domain.Repositories;
 using SpaceReservation.Infrastructure.Persistence;
 using SpaceReservation.Infrastructure.Repositories;
+using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,15 +15,35 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Configure database connection
-var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") ?? 
-    builder.Configuration.GetConnectionString("DefaultConnection");
+var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+var connectionString = databaseUrl ?? builder.Configuration.GetConnectionString("DefaultConnection");
 
-if (connectionString?.StartsWith("postgres://") == true)
+if (!string.IsNullOrEmpty(databaseUrl))
 {
-    // Convert Railway PostgreSQL URL to Npgsql connection string
-    var uri = new Uri(connectionString);
-    var userInfo = uri.UserInfo.Split(':');
-    connectionString = $"Host={uri.Host};Port={uri.Port};Database={uri.AbsolutePath.TrimStart('/')};Username={userInfo[0]};Password={userInfo[1]};SSL Mode=Require;Trust Server Certificate=true";
+    try 
+    {
+        // Parse connection string
+        var databaseUri = new Uri(databaseUrl);
+        var userInfo = databaseUri.UserInfo.Split(':');
+        var builder2 = new NpgsqlConnectionStringBuilder
+        {
+            Host = databaseUri.Host,
+            Port = databaseUri.Port,
+            Database = databaseUri.AbsolutePath.TrimStart('/'),
+            Username = userInfo[0],
+            Password = userInfo[1],
+            SslMode = SslMode.Require,
+            TrustServerCertificate = true,
+        };
+        
+        connectionString = builder2.ToString();
+        Console.WriteLine($"Host: {databaseUri.Host}, Port: {databaseUri.Port}, Database: {databaseUri.AbsolutePath.TrimStart('/')}");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error parsing DATABASE_URL: {ex.Message}");
+        throw;
+    }
 }
 
 // Add PostgreSQL DbContext
@@ -52,10 +73,20 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // Apply migrations
-using (var scope = app.Services.CreateScope())
+try
 {
-    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    db.Database.Migrate();
+    using (var scope = app.Services.CreateScope())
+    {
+        var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        db.Database.Migrate();
+        Console.WriteLine("Database migrations applied successfully");
+    }
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"Error applying migrations: {ex.Message}");
+    Console.WriteLine($"Stack trace: {ex.StackTrace}");
+    throw;
 }
 
 // Configure the HTTP request pipeline.
