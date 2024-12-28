@@ -17,6 +17,14 @@ builder.Services.AddSwaggerGen();
 var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") ?? 
     builder.Configuration.GetConnectionString("DefaultConnection");
 
+if (connectionString?.StartsWith("postgres://") == true)
+{
+    // Convert Railway PostgreSQL URL to Npgsql connection string
+    var uri = new Uri(connectionString);
+    var userInfo = uri.UserInfo.Split(':');
+    connectionString = $"Host={uri.Host};Port={uri.Port};Database={uri.AbsolutePath.TrimStart('/')};Username={userInfo[0]};Password={userInfo[1]};SSL Mode=Require;Trust Server Certificate=true";
+}
+
 // Add PostgreSQL DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
