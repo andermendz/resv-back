@@ -1,26 +1,29 @@
-# Build results
-[Dd]ebug/
-[Rr]elease/
-x64/
-build/
-[Bb]in/
-[Oo]bj/
+## Ignore development settings
+**/appsettings.Development.json
 
-# Visual Studio files
+## Visual Studio files
 .vs/
+bin/
+obj/
 *.user
 *.userosscache
-*.sln.docstates
+*.suo
+*.userprefs
 
-# Application settings
-**/appsettings.json
-**/appsettings.Development.json
-**/appsettings.Production.json
-
-# .NET Core
+## .NET Core
 project.lock.json
 project.fragment.lock.json
 artifacts/
 
-# Rider
+## Rider
 .idea/
+
+## Visual Studio Code
+.vscode/
+
+## NuGet Packages
+*.nupkg
+**/packages/*
+!**/packages/build/
+*.nuget.props
+*.nuget.targets 
