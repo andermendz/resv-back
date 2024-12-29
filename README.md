@@ -1,76 +1,76 @@
-# Space Reservation System - Backend API
+# Sistema de Reserva de Espacios - API Backend
 
-## Description
-RESTful API backend service for the Space Reservation System. Provides comprehensive endpoints for space management and reservation handling, supporting the frontend application with robust business logic and data persistence.
+## Descripción
+Servicio API RESTful para el Sistema de Reserva de Espacios. Proporciona endpoints completos para la gestión de espacios y manejo de reservas, apoyando la aplicación frontend con una robusta lógica de negocio y persistencia de datos.
 
-## Key Features
-- 🔐 Secure API endpoints for space and reservation management
-- 📊 Efficient data persistence with Entity Framework Core
-- 🔄 Real-time availability checking and conflict prevention
-- ⚡ High-performance API responses
-- 🛡️ Input validation and error handling
-- 📝 Comprehensive logging system
+## Características Principales
+- 🔐 Endpoints API seguros para gestión de espacios y reservas
+- 📊 Persistencia eficiente de datos con Entity Framework Core
+- 🔄 Verificación de disponibilidad en tiempo real y prevención de conflictos
+- ⚡ Respuestas API de alto rendimiento
+- 🛡️ Validación de entrada y manejo de errores
+- 📝 Sistema integral de registro de actividades
 
-## Technical Requirements
-- .NET 7.0 SDK or higher
-- SQL Server (2019 or higher)
-- Visual Studio 2022 or VS Code with C# extensions
+## Requisitos Técnicos
+- .NET 7.0 SDK o superior
+- SQL Server (2019 o superior)
+- Visual Studio 2022 o VS Code con extensiones C#
 
-## Installation
+## Instalación
 
-1. Clone the repository:
+1. Clonar el repositorio:
 ```bash
 git clone [REPOSITORY_URL]
 ```
 
-2. Navigate to the project directory:
+2. Navegar al directorio del proyecto:
 ```bash
 cd SpaceReservation.Backend
 ```
 
-3. Restore dependencies:
+3. Restaurar dependencias:
 ```bash
 dotnet restore
 ```
 
-4. Update the database:
+4. Actualizar la base de datos:
 ```bash
 dotnet ef database update
 ```
 
-5. Run the application:
+5. Ejecutar la aplicación:
 ```bash
 dotnet run --project src/SpaceReservation.Api
 ```
 
-The API will be available at `https://localhost:7001`
+La API estará disponible en `https://localhost:7001`
 
-## Project Structure
+## Estructura del Proyecto
 ```
 src/
-├── SpaceReservation.Api/           # API endpoints and configuration
-├── SpaceReservation.Application/   # Business logic and services
-├── SpaceReservation.Domain/        # Domain entities and interfaces
-└── SpaceReservation.Infrastructure/# Data access and external services
+├── SpaceReservation.Api/           # Endpoints API y configuración
+├── SpaceReservation.Application/   # Lógica de negocio y servicios
+├── SpaceReservation.Domain/        # Entidades de dominio e interfaces
+└── SpaceReservation.Infrastructure/# Acceso a datos y servicios externos
 ```
 
-## API Endpoints
+## Endpoints API
 
-### Spaces
-- GET /api/spaces - Get all spaces
-- GET /api/spaces/{id} - Get space by ID
-- POST /api/spaces - Create new space
-- PUT /api/spaces/{id} - Update space
-- DELETE /api/spaces/{id} - Delete space
+### Espacios
+- GET /api/spaces - Obtener todos los espacios
+- GET /api/spaces/{id} - Obtener espacio por ID
+- POST /api/spaces - Crear nuevo espacio
+- PUT /api/spaces/{id} - Actualizar espacio
+- DELETE /api/spaces/{id} - Eliminar espacio
 
-### Reservations
-- GET /api/reservations - Get all reservations
-- GET /api/reservations/{id} - Get reservation by ID
-- POST /api/reservations - Create new reservation
-- PUT /api/reservations/{id} - Update reservation
-- DELETE /api/reservations/{id} - Delete reservation
+### Reservas
+- GET /api/reservations - Obtener todas las reservas
+- GET /api/reservations/{id} - Obtener reserva por ID
+- POST /api/reservations - Crear nueva reserva
+- PUT /api/reservations/{id} - Actualizar reserva
+- DELETE /api/reservations/{id} - Eliminar reserva
 
-## Technologies Used
+## Tecnologías Utilizadas
 - ASP.NET Core 7.0
 - Entity Framework Core
 - SQL Server
@@ -78,28 +78,28 @@ src/
 - FluentValidation
 - Swagger/OpenAPI
 
-## Architecture
-- Clean Architecture principles
-- Domain-Driven Design (DDD) patterns
-- CQRS pattern for separation of read and write operations
-- Repository pattern for data access
-- Dependency Injection for loose coupling
+## Arquitectura
+- Principios de Arquitectura Limpia
+- Patrones de Diseño Dirigido por Dominio (DDD)
+- Patrón CQRS para separación de operaciones de lectura y escritura
+- Patrón Repositorio para acceso a datos
+- Inyección de Dependencias para bajo acoplamiento
 
-## Development
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+## Desarrollo
+1. Hacer fork del repositorio
+2. Crear rama de funcionalidad (`git checkout -b feature/NuevaFuncionalidad`)
+3. Confirmar cambios (`git commit -m 'Agregar nueva funcionalidad'`)
+4. Subir la rama (`git push origin feature/NuevaFuncionalidad`)
+5. Abrir un Pull Request
 
-## Testing
-Run the tests using:
+## Pruebas
+Ejecutar las pruebas usando:
 ```bash
 dotnet test
 ```
 
-## License
-This project is licensed under the [LICENSE_TYPE].
+## Licencia
+Este proyecto está licenciado bajo [LICENSE_TYPE].
 
-## Related Projects
-- [Space Reservation Frontend](FRONTEND_REPO_URL) 
+## Proyectos Relacionados
+- [Frontend de Reserva de Espacios](FRONTEND_REPO_URL) 
