@@ -12,7 +12,7 @@ Servicio API RESTful para el Sistema de Reserva de Espacios. Proporciona endpoin
 - 📝 Sistema integral de registro de actividades
 
 ## Requisitos Técnicos
-- .NET 7.0 SDK o superior
+- .NET 9.0 SDK
 - SQL Server (2019 o superior)
 - Visual Studio 2022 o VS Code con extensiones C#
 
@@ -47,11 +47,14 @@ La API estará disponible en `https://localhost:7001`
 
 ## Estructura del Proyecto
 ```
-src/
-├── SpaceReservation.Api/           # Endpoints API y configuración
-├── SpaceReservation.Application/   # Lógica de negocio y servicios
-├── SpaceReservation.Domain/        # Entidades de dominio e interfaces
-└── SpaceReservation.Infrastructure/# Acceso a datos y servicios externos
+SpaceReservation.Backend/
+├── src/
+│   ├── SpaceReservation.Api/           # Endpoints API y configuración
+│   ├── SpaceReservation.Application/   # Lógica de negocio y servicios
+│   ├── SpaceReservation.Domain/        # Entidades de dominio e interfaces
+│   └── SpaceReservation.Infrastructure/# Acceso a datos y servicios externos
+└── tests/
+    └── SpaceReservation.Tests/         # Pruebas unitarias y de integración
 ```
 
 ## Endpoints API
@@ -66,12 +69,13 @@ src/
 ### Reservas
 - GET /api/reservations - Obtener todas las reservas
 - GET /api/reservations/{id} - Obtener reserva por ID
+- GET /api/reservations/space/{spaceId} - Obtener reservas por espacio
+- GET /api/reservations/user/{cedula} - Obtener reservas por cédula
 - POST /api/reservations - Crear nueva reserva
-- PUT /api/reservations/{id} - Actualizar reserva
 - DELETE /api/reservations/{id} - Eliminar reserva
 
 ## Tecnologías Utilizadas
-- ASP.NET Core 7.0
+- ASP.NET Core 9.0
 - Entity Framework Core
 - SQL Server
 - AutoMapper
@@ -85,6 +89,34 @@ src/
 - Patrón Repositorio para acceso a datos
 - Inyección de Dependencias para bajo acoplamiento
 
+## Pruebas
+El proyecto incluye pruebas unitarias exhaustivas utilizando:
+- xUnit como framework de pruebas
+- Moq para simulación de dependencias
+- FluentAssertions para aserciones más legibles
+
+### Ejecutar las Pruebas
+
+Para ejecutar todas las pruebas:
+```bash
+dotnet test
+```
+
+Para ejecutar pruebas con cobertura:
+```bash
+dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov
+```
+
+### Estructura de Pruebas
+Las pruebas están organizadas por componente:
+- `ReservationServiceTests.cs`: Pruebas para el servicio de reservas
+  - Validación de creación de reservas
+  - Manejo de conflictos de horarios
+  - Operaciones CRUD
+- `SpaceServiceTests.cs`: Pruebas para el servicio de espacios
+  - Operaciones CRUD de espacios
+  - Validaciones de negocio
+
 ## Desarrollo
 1. Hacer fork del repositorio
 2. Crear rama de funcionalidad (`git checkout -b feature/NuevaFuncionalidad`)
@@ -92,14 +124,8 @@ src/
 4. Subir la rama (`git push origin feature/NuevaFuncionalidad`)
 5. Abrir un Pull Request
 
-## Pruebas
-Ejecutar las pruebas usando:
-```bash
-dotnet test
-```
-
 ## Licencia
-Este proyecto está licenciado bajo [LICENSE_TYPE].
+Este proyecto está licenciado bajo MIT License.
 
 ## Proyectos Relacionados
 - [Frontend de Reserva de Espacios](FRONTEND_REPO_URL) 
